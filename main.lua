@@ -35,24 +35,24 @@ local function costofpizza( event )
 		result.text = ("Please enter the number between 1 to 4")
 	elseif (costSize ~= "Large") and (costSize ~= "Extra Large") then
 		result.text = ("Please enter a vaild size Large or Extra Large")
-	elseif (costSize == "Extra Large") and (costToppings >= 3) then
+	elseif (costSize == "Extra Large") and (costToppings <= 3) then
 		subtotal = 10.0+ (0.25+(costToppings*0.75))
-		tax = (subtotal*0.13)
+		tax = (math.floor((subtotal*0.13)*100))/100
 		total = subtotal + tax
 		result.text = ("Subtotal : $ "..subtotal..  "  Tax : $ "..tax..  "  Total Cost : $ "..total)
-	elseif (costSize == "Large") and (costToppings >= 3) then
+	elseif (costSize == "Large") and (costToppings <= 3) then
 		subtotal = 6.0+ (0.25+(costToppings*0.75))
-		tax = (subtotal*0.13)
+		tax = (math.floor((subtotal*0.13)*100))/100
 		total = subtotal + tax
 		result.text = ("Subtotal : $ "..subtotal.."Tax : $ "..tax.."Total Cost : $ "..total)
 	elseif (costSize == "Large") and (costToppings == 4) then
 		subtotal = 9.35
-		tax = (subtotal*0.13)
+		tax = (math.floor((subtotal*0.13)*100))/100
 		total = subtotal + tax
 		result.text = ("Subtotal : $ "..subtotal.."Tax : $ "..tax.."Total Cost : $ "..total)
 	else 
 		subtotal = 13.35
-		tax = (subtotal*0.13)
+		tax = (math.floor((subtotal*0.13)*100))/100
 		total = subtotal + tax
 		result.text = ("Subtotal : $ "..subtotal.."Tax : $ "..tax.."Total Cost : $ "..total)
 	end
